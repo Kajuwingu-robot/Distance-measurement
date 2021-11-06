@@ -40,3 +40,13 @@ The 2 sensors used:
 This sensor works on the principle of a sonar: The sensor emits an ultra-sound wave that will be reflected on an obstacle and we measure the time it takes to return to the sensor.
 
 ![img](img/hcsr04sonar-12b89-517ec.jpg)
+
+The sensor documentation indicates that: distance = 1/58 x duration = 0.172 x duration (distance in cm, duration ms)
+
+CHECK: Knowing the speed of sound propagation in air C = 340 m / s approximately, we can deduce the distance:
+
+    C = 2 x distance / duration therefore distance = 0.5 x C x duration (we take twice the distance because the wave travels the outward and return)
+    therefore distance = 0.5 x 340 x duration = 170 x duration (distance in m, duration in s)
+    If now, we express the duration in milliseconds (us) and the distance in centimeters (cm), we obtain: distance = 0.017 x duration (distance in cm, duration us), which corresponds roughly to the documentation.
+
+Note: The speed of sound propagation in air depends on various parameters including temperature. There may therefore be fluctuations in measurements. https://en.wikipedia.org/wiki/Speed_of_sound
